@@ -15,10 +15,12 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Inputs")]
     PlayerInputs playerInputActions;
-    private float inputVector;
+    private Vector2 inputVector;
 
     [Header("Boundaries")]
     [SerializeField] private float zLimits;
+    [SerializeField] private float xLeftLimit;
+    [SerializeField] private float xRightLimit;
 
     [Header("Tilt angle")]
     [SerializeField] private float tiltAngleCompensation;
@@ -49,19 +51,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void Inputs()
     {
-        inputVector = playerInputActions.Player.Movement.ReadValue<float>();
+        inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
     }
 
     private void Movement()
     {
-        if (Mathf.Abs(inputVector) > 0)
+        if (Mathf.Abs(inputVector.y) > 0)
         {
-            float increment = inputVector * acceleration;
+            float increment = inputVector.y * acceleration;
             float newSpeed = Mathf.Clamp(rb.velocity.z + increment, -maxSpeed, maxSpeed);
-            rb.velocity = new Vector3(0f, 0f, newSpeed);
+            rb.velocity = new(rb.velocity.x, 0f, newSpeed);
         }
 
-        rb.position = new(0f, 0f, Mathf.Clamp(rb.position.z, -zLimits, zLimits));
+        if (Mathf.Abs(inputVector.x) > 0)
+        {
+            float increment = inputVector.x * acceleration;
+            float newSpeed = Mathf.Clamp(rb.velocity.x + increment, -maxSpeed, maxSpeed);
+            rb.velocity = new(newSpeed, 0f, rb.velocity.z);
+        }
+
+        rb.position = new(Mathf.Clamp(rb.position.x, xLeftLimit, xRightLimit), 0f, Mathf.Clamp(rb.position.z, -zLimits, zLimits));
     }
 
     private void VisualTilt()
@@ -73,7 +82,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyDrag()
     {
-        if (inputVector == 0)
-            rb.velocity *= drag;
+        Vector3 vel = rb.velocity;
+
+        if (inputVector.x == 0)
+            vel.x *= drag;
+
+        if (inputVector.y == 0)
+            vel.z *= drag;
+
+        rb.velocity = vel;
     }
 }
