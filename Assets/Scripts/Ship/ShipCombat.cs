@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class ShipCombat : MonoBehaviour
 {
     [Header("Stats")]
-    [SerializeField] protected float damage;
+    public float damage;
     [SerializeField] protected float fireRate;
     [SerializeField] protected float shotSpeed;
     [SerializeField] protected float maxHealth;
