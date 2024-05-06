@@ -12200,7 +12200,7 @@ MonoBehaviour:
   zLimits: 92
   xLeftLimit: 0
   xRightLimit: 350
-  tiltAngleCompensation: 20
+  tiltAngleCompensation: 30
 --- !u!54 &4273113431833062210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12247,7 +12247,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 29.11546, y: 5, z: 11.3}
+  m_Size: {x: 29.11546, y: 7.5, z: 11.3}
   m_Center: {x: 0, y: 1.6281751, z: -1.5}
 --- !u!65 &4273113431833062212
 BoxCollider:
@@ -12268,7 +12268,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 12.3, y: 5, z: 8.67}
+  m_Size: {x: 12.3, y: 7.5, z: 8.67}
   m_Center: {x: -1.3735546e-15, y: 1.6281751, z: 8.4}
 --- !u!114 &4273113431833062213
 MonoBehaviour:

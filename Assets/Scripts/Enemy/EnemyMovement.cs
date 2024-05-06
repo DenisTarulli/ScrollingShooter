@@ -6,7 +6,7 @@ public abstract class EnemyMovement : MonoBehaviour
 {
     [SerializeField, Range(0, 1f)] private float speedModifier;
     [SerializeField] protected string wavePattern;
-    protected Transform[] routes = new Transform[4];
+    protected Transform[] routes;
 
     protected int routeToGo;
     protected float tParam;
@@ -15,11 +15,13 @@ public abstract class EnemyMovement : MonoBehaviour
 
     protected void FindWavePattern()
     {
-        Transform wave = GameObject.FindWithTag(wavePattern).transform;
+        Transform pattern = GameObject.FindWithTag(wavePattern).transform;
+        int routesAmount = pattern.childCount;
+        routes = new Transform[routesAmount];
 
-        for (int i = 0; i < routes.Length; i++)
+        for (int i = 0; i < routesAmount; i++)
         {
-            routes[i] = wave.GetChild(i);
+            routes[i] = pattern.GetChild(i);
         }
     }
 
