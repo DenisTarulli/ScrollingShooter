@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [SerializeField, Range(0, 1f)] private float speedModifier;
     [SerializeField] protected string wavePattern;
@@ -11,7 +11,25 @@ public abstract class EnemyMovement : MonoBehaviour
     protected int routeToGo;
     protected float tParam;
     protected Vector3 objectPosition;
-    protected bool courutineAllowed;    
+    protected bool coroutineAllowed;
+
+    private void Awake()
+    {
+        FindWavePattern();
+    }
+
+    private void Start()
+    {
+        routeToGo = 0;
+        tParam = 0f;
+        coroutineAllowed = true;
+    }
+
+    private void Update()
+    {
+        if (coroutineAllowed)
+            StartCoroutine(GoByTheRoute(routeToGo));
+    }
 
     protected void FindWavePattern()
     {
@@ -27,7 +45,7 @@ public abstract class EnemyMovement : MonoBehaviour
 
     protected IEnumerator GoByTheRoute(int routeIndex)
     {
-        courutineAllowed = false;
+        coroutineAllowed = false;
 
         Vector3 p0 = routes[routeIndex].GetChild(0).position;
         Vector3 p1 = routes[routeIndex].GetChild(1).position;
@@ -55,6 +73,6 @@ public abstract class EnemyMovement : MonoBehaviour
         if (routeToGo > routes.Length - 1)
             routeToGo = 0;
 
-        courutineAllowed = true;
+        coroutineAllowed = true;
     }
 }

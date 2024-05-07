@@ -13,12 +13,12 @@ public class TestEnemyMovement : EnemyMovement
     {
         routeToGo = 0;
         tParam = 0f;
-        courutineAllowed = true;
+        coroutineAllowed = true;
     }
 
     private void Update()
     {
-        if (courutineAllowed)
+        if (coroutineAllowed)
             StartCoroutine(GoByTheRoute(routeToGo));
     }
 }

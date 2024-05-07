@@ -6,7 +6,8 @@ TagManager:
   tags:
   - PlayerBullet
   - EnemyBullet
-  - Wave1
+  - Pattern1
+  - Pattern2
   layers:
   - Default
   - TransparentFX

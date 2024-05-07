@@ -26,8 +26,6 @@ public abstract class ShipCombat : MonoBehaviour
 
             GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, bulletOrientation.rotation);
             bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * shotSpeed;
-
-            Destroy(bullet, bulletLifeTime);
         }
     }
 
