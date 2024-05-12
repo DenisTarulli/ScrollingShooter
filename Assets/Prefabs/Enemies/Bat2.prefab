@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 8232936783918553144}
   - component: {fileID: 2189573211421136721}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Bat2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   damage: 10
   fireRate: 1.2
   shotSpeed: 150
-  maxHealth: 100
+  maxHealth: 50
   bulletPrefab: {fileID: 5258708609172217673, guid: 09b12ef1647048047bdaeb37b0b52f8a,
     type: 3}
   spawnPoint: {fileID: 6110087108233240350}
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2156dea21471a944fb6bf2c5efb15d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedModifier: 0.6
+  speedModifier: 0.7
   wavePattern: Pattern2
 --- !u!1 &6660232214470918596
 GameObject:

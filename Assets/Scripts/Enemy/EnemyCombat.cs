@@ -14,7 +14,7 @@ public class EnemyCombat : ShipCombat
 
     private void Update()
     {
-        Shoot();
+        Shoot(spawnPoint);
     }    
 
     protected override void TakeDamage(float damage)

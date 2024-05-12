@@ -18,14 +18,14 @@ public abstract class ShipCombat : MonoBehaviour
     [SerializeField] protected Transform spawnPoint;
     [SerializeField] protected Transform bulletOrientation;
 
-    protected void Shoot()
+    protected virtual void Shoot(Transform shootPosition)
     {
         if (Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
 
-            GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, bulletOrientation.rotation);
-            bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * shotSpeed;
+            GameObject bullet = Instantiate(bulletPrefab, shootPosition.position, bulletOrientation.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = shootPosition.forward * shotSpeed;
         }
     }
 
