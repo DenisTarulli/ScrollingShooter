@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField, Range(0, 1f)] private float speedModifier;
-    [SerializeField] protected string wavePattern;
+    [HideInInspector] public string wavePattern;
     protected Transform[] routes;
 
     protected int routeToGo;
@@ -15,11 +15,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
-        FindWavePattern();
     }
 
     private void Start()
     {
+        FindWavePattern();
         routeToGo = 0;
         tParam = 0f;
         coroutineAllowed = true;

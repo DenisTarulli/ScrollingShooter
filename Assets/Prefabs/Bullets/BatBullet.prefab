@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 3, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 591336412561680017}
@@ -127,10 +127,10 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 0.08
-  m_PreviewTimeScale: 1
+  m_PreviewTimeScale: 0.5
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 2
+    widthMultiplier: 2.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 8093944666121876662}
   - component: {fileID: -551962243344125894}
   m_Layer: 0
-  m_Name: EnemyBullet
+  m_Name: BatBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,7 +226,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 19.73, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 3, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4870022606631680011}
@@ -251,8 +251,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.59
-  m_Height: 2.06
+  m_Radius: 1.1
+  m_Height: 6.1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8093944666121876662
@@ -297,3 +297,4 @@ MonoBehaviour:
   leftLimit: -80
   rightLimit: 460
   zLimit: 170
+  bulletDamage: 10

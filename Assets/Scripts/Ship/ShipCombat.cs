@@ -5,19 +5,17 @@ using UnityEngine;
 public abstract class ShipCombat : MonoBehaviour
 {
     [Header("Stats")]
-    public float damage;
     [SerializeField] protected float fireRate;
     [SerializeField] protected float shotSpeed;
     [SerializeField] protected float maxHealth;
     protected float currentHealth;
     protected float nextTimeToFire;
-    protected readonly float bulletLifeTime = 3f;
 
     [Header("References")]
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected Transform spawnPoint;
     [SerializeField] protected Transform bulletOrientation;
-
+    
     protected virtual void Shoot(Transform shootPosition)
     {
         if (Time.time >= nextTimeToFire)

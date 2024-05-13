@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerCombat : ShipCombat
 {
-    [SerializeField] private float bulletDamageTaken;
+    [Header("Damage stat")]
+    public float damage;
 
     [Header("Shoot spawn points")]
     [SerializeField] private Transform spawnPoint2;
@@ -67,8 +68,9 @@ public class PlayerCombat : ShipCombat
     {
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
+            float damageToTake = other.GetComponent<Bullet>().bulletDamage;
+            TakeDamage(damageToTake);
             Destroy(other.gameObject);
-            TakeDamage(bulletDamageTaken);
         }
     }
 }

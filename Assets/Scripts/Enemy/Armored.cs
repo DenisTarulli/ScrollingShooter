@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCombat : ShipCombat
+public class Armored : ShipCombat
 {
     private PlayerCombat playerCombat;
 
@@ -15,14 +15,14 @@ public class EnemyCombat : ShipCombat
     private void Update()
     {
         Shoot(spawnPoint);
-    }    
+    }
 
     protected override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
 
-        if (currentHealth <= 0)
-            Destroy(gameObject);
+        if (currentHealth <= 0)        
+            Destroy(gameObject);        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,5 +32,13 @@ public class EnemyCombat : ShipCombat
             Destroy(other.gameObject);
             TakeDamage(playerCombat.damage);
         }
+    }
+
+    private void OnDestroy()
+    {
+        WavesManager wavesManager = FindObjectOfType<WavesManager>();
+
+        if (wavesManager != null)
+            wavesManager.AddEnemyKill();
     }
 }
