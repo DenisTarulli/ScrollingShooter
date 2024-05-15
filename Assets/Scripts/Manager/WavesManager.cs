@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class WavesManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] shipPrefabs;
+    [Header("Waves values")]
     [SerializeField] private int[] waveEnemiesAmount;
     [SerializeField] private float[] spawnDelaySeconds;
+
+    
+    [Header("Enemies prefabs")]
+    [SerializeField] private GameObject[] shipPrefabs;
     private int enemyKillCount;
+
+    [Header("Wave Patterns")]
+    [SerializeField] private GameObject patterns;
 
     private void Start()
     {
+        patterns.SetActive(true);
         enemyKillCount = 0;
         StartCoroutine(WaveStart(shipPrefabs[0], waveEnemiesAmount[0], "Pattern1", "Pattern2", spawnDelaySeconds[0]));
     }

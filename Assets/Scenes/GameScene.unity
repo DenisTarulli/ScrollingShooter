@@ -21313,7 +21313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2023890335
 Transform:
   m_ObjectHideFlags: 0
@@ -21443,13 +21443,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f295fd6931ddb6b40b1c93c51a9caae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipPrefabs:
-  - {fileID: 5881848751677895423, guid: 77124a66999116c42beb0d3fe8a7d1a7, type: 3}
-  - {fileID: 8210736054884466031, guid: 7974b96b4e9ee5646bae3e865ce66f64, type: 3}
-  waveEnemiesAmount: 0600000003000000
+  waveEnemiesAmount: 0400000003000000
   spawnDelaySeconds:
   - 1
   - 3
+  shipPrefabs:
+  - {fileID: 5881848751677895423, guid: 77124a66999116c42beb0d3fe8a7d1a7, type: 3}
+  - {fileID: 8210736054884466031, guid: 7974b96b4e9ee5646bae3e865ce66f64, type: 3}
+  patterns: {fileID: 2023890334}
 --- !u!4 &2056630812
 Transform:
   m_ObjectHideFlags: 0
