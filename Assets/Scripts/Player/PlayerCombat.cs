@@ -69,6 +69,8 @@ public class PlayerCombat : ShipCombat
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
             float damageToTake = other.GetComponent<Bullet>().bulletDamage;
+            GameObject hitEffect = other.gameObject.GetComponent<Bullet>().hitEffectParticles;
+            InstantiateHitEffect(hitEffect ,other.transform.position);
             TakeDamage(damageToTake);
             Destroy(other.gameObject);
         }

@@ -21,14 +21,19 @@ public class Armored : ShipCombat
     {
         base.TakeDamage(damage);
 
-        if (currentHealth <= 0)        
+        if (currentHealth <= 0)
+        {
+            ExplosionEffect();
             Destroy(gameObject);        
+        }    
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PlayerBullet"))
         {
+            GameObject hitEffect = other.gameObject.GetComponent<Bullet>().hitEffectParticles;
+            InstantiateHitEffect(hitEffect, other.transform.position);
             Destroy(other.gameObject);
             TakeDamage(playerCombat.damage);
         }

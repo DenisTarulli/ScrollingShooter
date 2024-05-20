@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float leftLimit;
     [SerializeField] private float rightLimit;
     [SerializeField] private float zLimit;
+
+    public GameObject hitEffectParticles;
     public float bulletDamage;
 
     private void Start()
