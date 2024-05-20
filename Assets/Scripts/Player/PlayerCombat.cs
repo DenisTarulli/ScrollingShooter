@@ -16,7 +16,9 @@ public class PlayerCombat : ShipCombat
 
     [Header("Multishot testing")]
     [SerializeField, Range(0, 2)] private int multishot;
+
     public Action OnHurt { get; set; }
+    public Action OnShoot { get; set; }
 
     public float MaxHealth { get => maxHealth; }
     public float CurrentHealth { get => currentHealth; }
@@ -45,6 +47,8 @@ public class PlayerCombat : ShipCombat
 
             if (multishot == 2)
                 Multishot(spawnPoint4, spawnPoint5);
+
+            OnShoot?.Invoke();
         }
     }
 
