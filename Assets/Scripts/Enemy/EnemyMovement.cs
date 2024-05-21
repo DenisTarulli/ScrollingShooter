@@ -5,17 +5,13 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField, Range(0, 1f)] private float speedModifier;
-    [HideInInspector] public string wavePattern;
+    [HideInInspector] public Transform wavePattern;
     protected Transform[] routes;
 
     protected int routeToGo;
     protected float tParam;
     protected Vector3 objectPosition;
     protected bool coroutineAllowed;
-
-    private void Awake()
-    {
-    }
 
     private void Start()
     {
@@ -33,13 +29,12 @@ public class EnemyMovement : MonoBehaviour
 
     protected void FindWavePattern()
     {
-        Transform pattern = GameObject.FindWithTag(wavePattern).transform;
-        int routesAmount = pattern.childCount;
+        int routesAmount = wavePattern.childCount;
         routes = new Transform[routesAmount];
 
         for (int i = 0; i < routesAmount; i++)
         {
-            routes[i] = pattern.GetChild(i);
+            routes[i] = wavePattern.GetChild(i);
         }
     }
 
