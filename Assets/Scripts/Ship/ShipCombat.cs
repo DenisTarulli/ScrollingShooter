@@ -21,6 +21,9 @@ public abstract class ShipCombat : MonoBehaviour
     [SerializeField] protected GameObject damageEffect;
     [SerializeField] protected float damageEffectDurationSeconds;
     [SerializeField] protected float destroyEffectDelay;
+
+    [Header("SFX")]
+    [SerializeField] protected string shootSoundName;
     
     protected virtual void Shoot(Transform shootPosition)
     {
@@ -30,6 +33,8 @@ public abstract class ShipCombat : MonoBehaviour
 
             GameObject bullet = Instantiate(bulletPrefab, shootPosition.position, bulletOrientation.rotation);
             bullet.GetComponent<Rigidbody>().velocity = shootPosition.forward * shotSpeed;
+
+            AudioManager.instance.Play(shootSoundName);
         }
     }
 

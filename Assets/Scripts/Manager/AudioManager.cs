@@ -39,6 +39,7 @@ public class AudioManager : MonoBehaviour
         playerToObserve = FindObjectOfType<PlayerCombat>();
 
         playerToObserve.OnShoot += ShootSound;
+        playerToObserve.OnHurt += HurtSound;
     }
 
     public void StopPlaying(string sound)
@@ -67,5 +68,10 @@ public class AudioManager : MonoBehaviour
     private void ShootSound()
     {
         Play("Shoot");
+    }
+
+    private void HurtSound()
+    {
+        Play("Hurt");
     }
 }

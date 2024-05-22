@@ -24,6 +24,7 @@ public class Armored : ShipCombat
         if (currentHealth <= 0)
         {
             ExplosionEffect();
+            AudioManager.instance.Play("Explosion");
             Destroy(gameObject);        
         }    
     }
@@ -36,6 +37,8 @@ public class Armored : ShipCombat
             InstantiateHitEffect(hitEffect, other.transform.position);
             Destroy(other.gameObject);
             TakeDamage(playerCombat.damage);
+
+            AudioManager.instance.Play("Hit");
         }
     }
 

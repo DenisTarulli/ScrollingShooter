@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class PlayerCombat : ShipCombat
 {
-    [Header("Damage stat")]
+    [Header("Extra stats")]
+    [SerializeField] private float invulnerabilityTime;
+    [SerializeField] private float enemyContactDamage;
     public float damage;
+    private bool canTakeDamage;
 
     [Header("Shoot spawn points")]
     [SerializeField] private Transform spawnPoint2;
@@ -26,6 +29,11 @@ public class PlayerCombat : ShipCombat
     private void Awake()
     {
         currentHealth = maxHealth;
+    }
+
+    private void Start()
+    {
+        canTakeDamage = true;
     }
 
     private void Update()
@@ -63,9 +71,21 @@ public class PlayerCombat : ShipCombat
 
     protected override void TakeDamage(float damage)
     {
+        if (!canTakeDamage) return;
+
         base.TakeDamage(damage);
+        StartCoroutine(nameof(InvulnerabilityTime));
 
         OnHurt?.Invoke();
+    }
+    
+    private IEnumerator InvulnerabilityTime()
+    {
+        canTakeDamage = false;
+
+        yield return new WaitForSeconds(invulnerabilityTime);
+
+        canTakeDamage = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -77,6 +97,22 @@ public class PlayerCombat : ShipCombat
             InstantiateHitEffect(hitEffect ,other.transform.position);
             TakeDamage(damageToTake);
             Destroy(other.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Scout"))
+        {
+            Scout scout = collision.gameObject.GetComponent<Scout>();
+            float damageToTake = scout.damage;
+            TakeDamage(damageToTake);
+            scout.DestroyEffect();
+        }
+
+        if (collision.gameObject.CompareTag("Bat") || collision.gameObject.CompareTag("Nova"))
+        {
+            TakeDamage(enemyContactDamage);
         }
     }
 }

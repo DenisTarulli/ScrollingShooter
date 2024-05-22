@@ -47,8 +47,43 @@ MonoBehaviour:
   sounds:
   - name: Shoot
     clip: {fileID: 8300000, guid: 0d04f1ea63b045b4ca868f00aebad0f8, type: 3}
-    volume: 0.03
+    volume: 0.02
     pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Hurt
+    clip: {fileID: 8300000, guid: 283c9344dcf53714bb6fb1e14a8b2009, type: 3}
+    volume: 0.08
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: c41d041399a257f4599cd183fd5d47b8, type: 3}
+    volume: 0.05
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 647bbda710c831143a83718fd2bbf49c, type: 3}
+    volume: 0.17
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: BatShoot
+    clip: {fileID: 8300000, guid: ab68edafeed0fed4a90acd2fccd1ed22, type: 3}
+    volume: 0.015
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: NovaShoot
+    clip: {fileID: 8300000, guid: ab68edafeed0fed4a90acd2fccd1ed22, type: 3}
+    volume: 0.015
+    pitch: 0.6
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}

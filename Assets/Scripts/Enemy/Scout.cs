@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bat : ShipCombat
+public class Scout : ShipCombat
 {
-    private PlayerCombat playerCombat;    
+    private PlayerCombat playerCombat;
+
+    [Header("Contact damage")]
+    public float damage;
 
     private void Start()
     {
@@ -12,26 +15,18 @@ public class Bat : ShipCombat
         playerCombat = FindObjectOfType<PlayerCombat>();
     }
 
-    private void Update()
-    {
-        Shoot(spawnPoint);
-    }    
-
     protected override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
 
         if (currentHealth <= 0)
-        {
-            ExplosionEffect();
-            AudioManager.instance.Play("Explosion");
-            Destroy(gameObject);                 
-        }      
+            DestroyEffect();        
     }
-
-    protected override void Shoot(Transform shootPosition)
+    public void DestroyEffect()
     {
-        base.Shoot(shootPosition);        
+        ExplosionEffect();
+        AudioManager.instance.Play("Explosion");
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
