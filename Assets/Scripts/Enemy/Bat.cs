@@ -22,11 +22,7 @@ public class Bat : ShipCombat
         base.TakeDamage(damage);
 
         if (currentHealth <= 0)
-        {
-            ExplosionEffect();
-            AudioManager.instance.Play("Explosion");
-            Destroy(gameObject);                 
-        }      
+            ShipDestroy();      
     }
 
     protected override void Shoot(Transform shootPosition)
@@ -41,7 +37,7 @@ public class Bat : ShipCombat
             GameObject hitEffect = other.gameObject.GetComponent<Bullet>().hitEffectParticles;
             InstantiateHitEffect(hitEffect, other.transform.position);
             Destroy(other.gameObject);
-            TakeDamage(playerCombat.damage);
+            TakeDamage(playerCombat.Damage);
 
             AudioManager.instance.Play("Hit");
         }

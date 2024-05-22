@@ -8,6 +8,7 @@ public abstract class ShipCombat : MonoBehaviour
     [SerializeField] protected float fireRate;
     [SerializeField] protected float shotSpeed;
     [SerializeField] protected float maxHealth;
+    [SerializeField, Range(0f, 1f)] protected float dropChance;
     protected float currentHealth;
     protected float nextTimeToFire;
 
@@ -63,5 +64,22 @@ public abstract class ShipCombat : MonoBehaviour
     {
         GameObject explosionEffect = Instantiate(explosionParticles, transform.position, Quaternion.identity);
         Destroy(explosionEffect, destroyEffectDelay);
+    }
+
+    protected void DropLootCheck()
+    {
+        PowerUpsManager powerUps = FindObjectOfType<PowerUpsManager>();
+        float randomFloat = Random.value;
+
+        if (randomFloat <= dropChance)
+            powerUps.DropLoot(transform.position);
+    }
+
+    protected void ShipDestroy()
+    {
+        DropLootCheck();
+        ExplosionEffect();
+        AudioManager.instance.Play("Explosion");
+        Destroy(gameObject);
     }
 }

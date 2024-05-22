@@ -8,7 +8,7 @@ public class PlayerCombat : ShipCombat
     [Header("Extra stats")]
     [SerializeField] private float invulnerabilityTime;
     [SerializeField] private float enemyContactDamage;
-    public float damage;
+    [SerializeField] private float damage;
     private bool canTakeDamage;
 
     [Header("Shoot spawn points")]
@@ -18,13 +18,16 @@ public class PlayerCombat : ShipCombat
     [SerializeField] private Transform spawnPoint5;
 
     [Header("Multishot testing")]
-    [SerializeField, Range(0, 2)] private int multishot;
+    [SerializeField, Range(0, 2)] private int shots;
 
     public Action OnHurt { get; set; }
     public Action OnShoot { get; set; }
 
     public float MaxHealth { get => maxHealth; }
     public float CurrentHealth { get => currentHealth; }
+    public int Shots { get => shots; set => shots = value; }
+    public float Damage { get => damage; set => damage = value; }
+    public float FireRate { get => fireRate; set => fireRate = value; }
 
     private void Awake()
     {
@@ -50,10 +53,10 @@ public class PlayerCombat : ShipCombat
             GameObject bullet = Instantiate(bulletPrefab, shootPosition.position, bulletOrientation.rotation);
             bullet.GetComponent<Rigidbody>().velocity = shootPosition.forward * shotSpeed;
 
-            if (multishot >= 1)
+            if (shots >= 1)
                 Multishot(spawnPoint2, spawnPoint3);
 
-            if (multishot == 2)
+            if (shots == 2)
                 Multishot(spawnPoint4, spawnPoint5);
 
             OnShoot?.Invoke();
@@ -107,7 +110,6 @@ public class PlayerCombat : ShipCombat
             Scout scout = collision.gameObject.GetComponent<Scout>();
             float damageToTake = scout.damage;
             TakeDamage(damageToTake);
-            scout.DestroyEffect();
         }
 
         if (collision.gameObject.CompareTag("Bat") || collision.gameObject.CompareTag("Nova"))

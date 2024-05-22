@@ -20,13 +20,7 @@ public class Scout : ShipCombat
         base.TakeDamage(damage);
 
         if (currentHealth <= 0)
-            DestroyEffect();        
-    }
-    public void DestroyEffect()
-    {
-        ExplosionEffect();
-        AudioManager.instance.Play("Explosion");
-        Destroy(gameObject);
+            ShipDestroy();     
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,10 +30,17 @@ public class Scout : ShipCombat
             GameObject hitEffect = other.gameObject.GetComponent<Bullet>().hitEffectParticles;
             InstantiateHitEffect(hitEffect, other.transform.position);
             Destroy(other.gameObject);
-            TakeDamage(playerCombat.damage);
+            TakeDamage(playerCombat.Damage);
 
             AudioManager.instance.Play("Hit");
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.gameObject.CompareTag("Player")) return;
+
+        ShipDestroy();
     }
 
     private void OnDestroy()
