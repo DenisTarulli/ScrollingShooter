@@ -303,7 +303,7 @@ MonoBehaviour:
   fireRate: 0.5
   shotSpeed: 100
   maxHealth: 200
-  dropChance: 0.3
+  dropChance: 0.35
   bulletPrefab: {fileID: 5258708609172217673, guid: 52232a1006040b744bffaa6db3d48c8e,
     type: 3}
   spawnPoint: {fileID: 2619366509829339327}

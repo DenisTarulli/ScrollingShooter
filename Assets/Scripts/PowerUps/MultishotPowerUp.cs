@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MultishotPowerUp : PowerUps
 {
+    [SerializeField] private float bonusDamageCompensation;
     private void Update()
     {
         Movement();   
@@ -15,6 +16,8 @@ public class MultishotPowerUp : PowerUps
 
         if (player.Shots != 2)
             player.Shots++;
+        else
+            player.Damage += bonusDamageCompensation;
     }
 
     private void OnTriggerEnter(Collider other)

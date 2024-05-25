@@ -79,6 +79,9 @@ public class PlayerCombat : ShipCombat
         base.TakeDamage(damage);
         StartCoroutine(nameof(InvulnerabilityTime));
 
+        if (shots != 0)
+            shots--;
+
         OnHurt?.Invoke();
     }
     

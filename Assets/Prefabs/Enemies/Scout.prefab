@@ -241,7 +241,7 @@ MonoBehaviour:
   fireRate: 0
   shotSpeed: 0
   maxHealth: 80
-  dropChance: 0.1
+  dropChance: 0.2
   bulletPrefab: {fileID: 0}
   spawnPoint: {fileID: 0}
   bulletOrientation: {fileID: 0}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireRatePowerUp : PowerUps
 {
+    [SerializeField] private float bonusFireRate;
     private void Update()
     {
         Movement();
@@ -13,7 +14,7 @@ public class FireRatePowerUp : PowerUps
     {
         PlayerCombat player = FindObjectOfType<PlayerCombat>();
 
-        player.FireRate += 0.7f;
+        player.FireRate += bonusFireRate;
     }
 
     private void OnTriggerEnter(Collider other)

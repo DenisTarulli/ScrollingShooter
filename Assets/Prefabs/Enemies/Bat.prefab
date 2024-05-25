@@ -217,10 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fb2aa78480e3b4fa87372e34cdc0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
+  fireRate: 0.8
   shotSpeed: 150
   maxHealth: 100
-  dropChance: 0.2
+  dropChance: 0.3
   bulletPrefab: {fileID: 5258708609172217673, guid: 450d34454c1a00b429c2570dee76eabc,
     type: 3}
   spawnPoint: {fileID: 6110087108233240350}

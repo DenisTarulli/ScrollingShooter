@@ -118,5 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b741755de90126d4bb373a46fbbfbde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
+  moveSpeed: 80
   leftLimit: -80
+  bonusFireRate: 0.2

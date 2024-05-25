@@ -5,9 +5,11 @@ using UnityEngine;
 public class WavesManager : MonoBehaviour
 {
     [Header("Waves values")]
+    [SerializeField] private int totalWaves;
     [SerializeField] private int[] waveEnemiesAmount;
     [SerializeField] private float[] spawnDelaySeconds;
     [SerializeField] private string[] waveShipPatterns;
+    private bool bossSpawned;
     private int enemiesAmountNextWaveTrigger;
     private int currentWave;
     
@@ -18,6 +20,7 @@ public class WavesManager : MonoBehaviour
     [Header("Wave Patterns")]
     [SerializeField] private GameObject patterns;
 
+    // Specific array element names
     private GameObject bat;
     private GameObject nova;
     private GameObject scout;
@@ -47,6 +50,7 @@ public class WavesManager : MonoBehaviour
         patterns.SetActive(true);
         enemyKillCount = 0;
         currentWave = 1;
+        bossSpawned = false;
 
         StartCoroutine(WaveStart(bat, waveEnemiesAmount[0], waveShipPatterns[0], spawnDelaySeconds[0]));
         currentWave++;
@@ -55,6 +59,10 @@ public class WavesManager : MonoBehaviour
     private void Update()
     {
         WaveTrigger();
+
+        if (currentWave > totalWaves && !bossSpawned)
+            SpawnBoss();
+
     }
 
     private IEnumerator WaveStart(GameObject ship, int enemiesAmount, string pattern, float spawnDelay)
@@ -83,6 +91,12 @@ public class WavesManager : MonoBehaviour
     public void AddEnemyKill()
     {
         enemyKillCount++;
+    }
+
+    private void SpawnBoss()
+    {
+        bossSpawned = true;
+        // placeholder
     }
 
     private void WaveTrigger()

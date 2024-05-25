@@ -30,7 +30,7 @@ public class Scout : ShipCombat
             GameObject hitEffect = other.gameObject.GetComponent<Bullet>().hitEffectParticles;
             InstantiateHitEffect(hitEffect, other.transform.position);
             Destroy(other.gameObject);
-            TakeDamage(playerCombat.Damage);
+            TakeDamage(playerCombat.Damage / (playerCombat.Shots + 1));
 
             AudioManager.instance.Play("Hit");
         }

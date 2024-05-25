@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DamagePowerUp : PowerUps
 {
+    [SerializeField] private float bonusDamage;
+
     private void Update()
     {
         Movement();
@@ -13,7 +15,7 @@ public class DamagePowerUp : PowerUps
     {
         PlayerCombat player = FindObjectOfType<PlayerCombat>();
 
-        player.Damage += 5f;
+        player.Damage += bonusDamage;
     }
 
     private void OnTriggerEnter(Collider other)
