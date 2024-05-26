@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: Shoot
     clip: {fileID: 8300000, guid: 0d04f1ea63b045b4ca868f00aebad0f8, type: 3}
-    volume: 0.02
+    volume: 0.025
     pitch: 1
     loop: 0
     playOnAwake: 0
@@ -75,15 +75,22 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: BatShoot
     clip: {fileID: 8300000, guid: ab68edafeed0fed4a90acd2fccd1ed22, type: 3}
-    volume: 0.015
+    volume: 0.012
     pitch: 1
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - name: NovaShoot
     clip: {fileID: 8300000, guid: ab68edafeed0fed4a90acd2fccd1ed22, type: 3}
-    volume: 0.015
+    volume: 0.012
     pitch: 0.6
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: PowerUp
+    clip: {fileID: 8300000, guid: 41cfd9d5497136546aec1b9eace0231f, type: 3}
+    volume: 0.34
+    pitch: 1
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}

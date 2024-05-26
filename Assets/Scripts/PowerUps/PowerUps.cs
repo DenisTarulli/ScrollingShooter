@@ -6,7 +6,10 @@ public abstract class PowerUps : MonoBehaviour
 {
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float leftLimit;
-    protected abstract void PowerUpEffect(); 
+    protected virtual void PowerUpEffect()
+    {
+        AudioManager.instance.Play("PowerUp");
+    }
     
     protected void Movement()
     {

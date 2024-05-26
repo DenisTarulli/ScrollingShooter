@@ -12,6 +12,8 @@ public class FireRatePowerUp : PowerUps
 
     protected override void PowerUpEffect()
     {
+        base.PowerUpEffect();
+
         PlayerCombat player = FindObjectOfType<PlayerCombat>();
 
         player.FireRate += bonusFireRate;

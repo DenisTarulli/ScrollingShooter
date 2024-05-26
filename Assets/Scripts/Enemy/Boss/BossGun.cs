@@ -7,12 +7,14 @@ public class BossGun : ShipCombat
 {
     [Header("Extra Stats")]
     [SerializeField] private Transform spawnPoint2;
+    private BossCombat bossCombat;
     
     private PlayerCombat playerCombat;
 
     private void Start()
     {
         playerCombat = FindObjectOfType<PlayerCombat>();
+        bossCombat = GetComponentInParent<BossCombat>();
         currentHealth = maxHealth;
     }
 
@@ -39,7 +41,10 @@ public class BossGun : ShipCombat
         base.TakeDamage(damage);
 
         if (currentHealth <= 0)
+        {
+            bossCombat.DisableInvulnerability();
             ShipDestroy();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

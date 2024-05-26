@@ -9,12 +9,14 @@ public class WavesManager : MonoBehaviour
     [SerializeField] private int[] waveEnemiesAmount;
     [SerializeField] private float[] spawnDelaySeconds;
     [SerializeField] private string[] waveShipPatterns;
+    [SerializeField] private Transform bossSpawnPoint;
     private bool bossSpawned;
     private int enemiesAmountNextWaveTrigger;
     private int currentWave;
     
     [Header("Enemies prefabs")]
     [SerializeField] private GameObject[] shipPrefabs;
+    [SerializeField] private GameObject bossObj;
     private int enemyKillCount;
 
     [Header("Wave Patterns")]
@@ -58,11 +60,7 @@ public class WavesManager : MonoBehaviour
 
     private void Update()
     {
-        WaveTrigger();
-
-        if (currentWave > totalWaves && !bossSpawned)
-            SpawnBoss();
-
+        WaveTrigger();            
     }
 
     private IEnumerator WaveStart(GameObject ship, int enemiesAmount, string pattern, float spawnDelay)
@@ -95,8 +93,11 @@ public class WavesManager : MonoBehaviour
 
     private void SpawnBoss()
     {
-        bossSpawned = true;
-        // placeholder
+        if (!bossSpawned)
+        {
+            bossSpawned = true;
+            Instantiate(bossObj, bossSpawnPoint);
+        }
     }
 
     private void WaveTrigger()
@@ -130,8 +131,30 @@ public class WavesManager : MonoBehaviour
                 case 6:
                     StartCoroutine(WaveStart(bat, waveEnemiesAmount[4], wavyPattern, longSpawnRate));
                     StartCoroutine(WaveStart(nova, waveEnemiesAmount[4], widePattern, longSpawnRate));
-                    StartCoroutine(WaveStart(scout, waveEnemiesAmount[4], zigzagPattern, mediumSpawnRate));
                     currentWave++;
+                    break;
+                case 7:
+                    StartCoroutine(WaveStart(scout, waveEnemiesAmount[5], wavyPattern, normalSpawnRate));
+                    currentWave++;
+                    break;
+                case 8:
+                    StartCoroutine(WaveStart(scout, waveEnemiesAmount[6], zigzagPattern, normalSpawnRate));
+                    StartCoroutine(WaveStart(nova, waveEnemiesAmount[6], widePattern, mediumSpawnRate));
+                    currentWave++;
+                    break;
+                case 9:
+                    StartCoroutine(WaveStart(bat, waveEnemiesAmount[7], wavyPattern, normalSpawnRate));
+                    StartCoroutine(WaveStart(nova, waveEnemiesAmount[7], widePattern, longSpawnRate));
+                    currentWave++;
+                    break;
+                case 10:
+                    StartCoroutine(WaveStart(bat, waveEnemiesAmount[8], wavyPattern, normalSpawnRate));
+                    StartCoroutine(WaveStart(nova, waveEnemiesAmount[8], widePattern, longSpawnRate));
+                    StartCoroutine(WaveStart(scout, waveEnemiesAmount[8], zigzagPattern, normalSpawnRate));
+                    currentWave++;
+                    break;
+                case 11:
+                    SpawnBoss();
                     break;
             }
         }

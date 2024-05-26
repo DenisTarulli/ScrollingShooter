@@ -111,8 +111,12 @@ public class PlayerCombat : ShipCombat
         if (collision.gameObject.CompareTag("Scout"))
         {
             Scout scout = collision.gameObject.GetComponent<Scout>();
-            float damageToTake = scout.damage;
-            TakeDamage(damageToTake);
+
+            if (scout != null)
+            {
+                float damageToTake = scout.damage;
+                TakeDamage(damageToTake);
+            }
         }
 
         if (collision.gameObject.CompareTag("Bat") || collision.gameObject.CompareTag("Nova"))

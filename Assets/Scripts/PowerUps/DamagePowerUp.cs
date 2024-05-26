@@ -13,6 +13,8 @@ public class DamagePowerUp : PowerUps
 
     protected override void PowerUpEffect()
     {
+        base.PowerUpEffect();
+
         PlayerCombat player = FindObjectOfType<PlayerCombat>();
 
         player.Damage += bonusDamage;

@@ -12,6 +12,8 @@ public class MultishotPowerUp : PowerUps
 
     protected override void PowerUpEffect()
     {
+        base.PowerUpEffect();
+
         PlayerCombat player = FindObjectOfType<PlayerCombat>();
 
         if (player.Shots != 2)
