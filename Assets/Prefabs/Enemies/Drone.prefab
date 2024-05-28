@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2212237318634573332}
   m_Layer: 0
   m_Name: Drone
-  m_TagString: Scout
+  m_TagString: Drone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0
   shotSpeed: 0
-  maxHealth: 300
+  maxHealth: 50
   dropChance: 0.3
   bulletPrefab: {fileID: 0}
   spawnPoint: {fileID: 0}
@@ -85,7 +85,8 @@ MonoBehaviour:
   damageEffectDurationSeconds: 0.15
   destroyEffectDelay: 1
   shootSoundName: 
-  damage: 50
+  lifeTime: 6
+  damage: 30
 --- !u!114 &2212237318634573332
 MonoBehaviour:
   m_ObjectHideFlags: 0

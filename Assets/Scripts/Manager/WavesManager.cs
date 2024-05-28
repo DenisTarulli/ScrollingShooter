@@ -133,26 +133,31 @@ public class WavesManager : MonoBehaviour
                     StartCoroutine(WaveStart(nova, waveEnemiesAmount[4], widePattern, longSpawnRate));
                     currentWave++;
                     break;
+
                 case 7:
                     StartCoroutine(WaveStart(scout, waveEnemiesAmount[5], wavyPattern, normalSpawnRate));
                     currentWave++;
                     break;
+
                 case 8:
                     StartCoroutine(WaveStart(scout, waveEnemiesAmount[6], zigzagPattern, normalSpawnRate));
                     StartCoroutine(WaveStart(nova, waveEnemiesAmount[6], widePattern, mediumSpawnRate));
                     currentWave++;
                     break;
+
                 case 9:
                     StartCoroutine(WaveStart(bat, waveEnemiesAmount[7], wavyPattern, normalSpawnRate));
                     StartCoroutine(WaveStart(nova, waveEnemiesAmount[7], widePattern, longSpawnRate));
                     currentWave++;
                     break;
+
                 case 10:
                     StartCoroutine(WaveStart(bat, waveEnemiesAmount[8], wavyPattern, normalSpawnRate));
                     StartCoroutine(WaveStart(nova, waveEnemiesAmount[8], widePattern, longSpawnRate));
                     StartCoroutine(WaveStart(scout, waveEnemiesAmount[8], zigzagPattern, normalSpawnRate));
                     currentWave++;
                     break;
+
                 case 11:
                     SpawnBoss();
                     break;

@@ -12,17 +12,17 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private float inPauseVolume;
 
     [HideInInspector] public bool gameIsPaused = false;
-    private PlayerInputs playerInputsActions;
 
-    private void Awake()
+    private void Update()
     {
-        playerInputsActions = new PlayerInputs();
-        playerInputsActions.Player.Enable();
-        playerInputsActions.Player.Pause.performed += CheckPause;
+        if (Input.GetKeyDown(KeyCode.Escape))
+            CheckPause();
     }
 
-    public void CheckPause(InputAction.CallbackContext context)
+    public void CheckPause()
     {
+        if (GameManager.Instance.gameIsOver) return;
+
         if (gameIsPaused)
         {
             BackSound();
@@ -45,7 +45,9 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
 
-        pauseMenuUI.SetActive(true);
+        if (pauseMenuUI != null)
+            pauseMenuUI.SetActive(true);
+
         AudioManager.instance.Play("Pause");
         music.volume = inPauseVolume;
         Time.timeScale = 0f;

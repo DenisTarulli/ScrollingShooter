@@ -17,6 +17,7 @@ TagManager:
   - BossGun
   - BossDronePattern
   - RoadEnd
+  - Drone
   layers:
   - Default
   - TransparentFX

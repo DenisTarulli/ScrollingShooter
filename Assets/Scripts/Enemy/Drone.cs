@@ -6,13 +6,16 @@ public class Drone : ShipCombat
 {
     private PlayerCombat playerCombat;
 
-    [Header("Contact damage")]
+    [Header("Extra stats")]
+    [SerializeField] private float lifeTime;
     public float damage;
 
     private void Start()
     {
         currentHealth = maxHealth;
         playerCombat = FindObjectOfType<PlayerCombat>();
+
+        Destroy(gameObject, lifeTime);
     }
 
     protected override void TakeDamage(float damage)
@@ -38,7 +41,7 @@ public class Drone : ShipCombat
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("BossDronePattern"))
+        if (collision.gameObject.CompareTag("Player"))
             ShipDestroy();
     }
 

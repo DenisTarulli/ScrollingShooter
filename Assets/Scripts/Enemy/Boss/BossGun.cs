@@ -40,11 +40,8 @@ public class BossGun : ShipCombat
     {
         base.TakeDamage(damage);
 
-        if (currentHealth <= 0)
-        {
-            bossCombat.DisableInvulnerability();
-            ShipDestroy();
-        }
+        if (currentHealth <= 0)        
+            ShipDestroy();        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -58,5 +55,10 @@ public class BossGun : ShipCombat
 
             AudioManager.instance.Play("Hit");
         }
+    }
+
+    private void OnDestroy()
+    {
+        bossCombat.DisableInvulnerability();
     }
 }

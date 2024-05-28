@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ddd60312bdd23448741c8a1e46ee59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 0}
+  winText: {fileID: 0}
+  loseText: {fileID: 0}
+  music: {fileID: 0}
+  gameIsOver: 0

@@ -246,7 +246,7 @@ MonoBehaviour:
   zLimit: 170
   hitEffectParticles: {fileID: 1047548413825066999, guid: c5b1233fbc45468419dd324befee8717,
     type: 3}
-  bulletDamage: 30
+  bulletDamage: 25
 --- !u!1 &7665219557262691664
 GameObject:
   m_ObjectHideFlags: 0

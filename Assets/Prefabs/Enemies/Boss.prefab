@@ -394,8 +394,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 1
-  shotSpeed: 250
-  maxHealth: 1500
+  shotSpeed: 200
+  maxHealth: 3500
   dropChance: 1
   bulletPrefab: {fileID: 5258708609172217673, guid: 450d34454c1a00b429c2570dee76eabc,
     type: 3}
@@ -558,7 +558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.5
   shotSpeed: 200
-  maxHealth: 5000
+  maxHealth: 6000
   dropChance: 0
   bulletPrefab: {fileID: 5258708609172217673, guid: 52232a1006040b744bffaa6db3d48c8e,
     type: 3}
@@ -845,8 +845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 1
-  shotSpeed: 250
-  maxHealth: 1500
+  shotSpeed: 200
+  maxHealth: 3500
   dropChance: 1
   bulletPrefab: {fileID: 5258708609172217673, guid: 450d34454c1a00b429c2570dee76eabc,
     type: 3}

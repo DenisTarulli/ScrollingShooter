@@ -55,9 +55,13 @@ public class BossCombat : ShipCombat
         base.TakeDamage(damage);
 
         if (currentHealth <= 0)
+        {
+            GameManager.Instance.GameOver();
             ShipDestroy();
+        }
         
     }
+
 
     private void DeployDrone()
     {

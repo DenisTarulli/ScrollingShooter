@@ -21,7 +21,6 @@ public class PlayerCombat : ShipCombat
     [SerializeField, Range(0, 2)] private int shots;
 
     public Action OnHurt { get; set; }
-    public Action OnShoot { get; set; }
 
     public float MaxHealth { get => maxHealth; }
     public float CurrentHealth { get => currentHealth; }
@@ -59,7 +58,7 @@ public class PlayerCombat : ShipCombat
             if (shots == 2)
                 Multishot(spawnPoint4, spawnPoint5);
 
-            OnShoot?.Invoke();
+            AudioManager.instance.Play("Shoot");
         }
     }
 
@@ -80,9 +79,13 @@ public class PlayerCombat : ShipCombat
         StartCoroutine(nameof(InvulnerabilityTime));
 
         if (shots != 0)
-            shots--;
+            shots--;        
 
         OnHurt?.Invoke();
+        AudioManager.instance.Play("Hurt");
+
+        if (currentHealth <= 0)
+            GameManager.Instance.GameOver();
     }
     
     private IEnumerator InvulnerabilityTime()
@@ -115,6 +118,17 @@ public class PlayerCombat : ShipCombat
             if (scout != null)
             {
                 float damageToTake = scout.damage;
+                TakeDamage(damageToTake);
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Drone"))
+        {
+            Drone drone = collision.gameObject.GetComponent<Drone>();
+
+            if (drone != null)
+            {
+                float damageToTake = drone.damage;
                 TakeDamage(damageToTake);
             }
         }
